@@ -1,13 +1,14 @@
-import Hero from '../components/Hero';
-import RepositoriesTable from '../components/repositories/RepositoriesTable';
-import useRepositories from '../hooks/useRepositories';
+import Hero from "../components/Hero";
+import RepositoriesTable from "../components/repositories/RepositoriesTable";
+import useRepositories from "../hooks/useRepositories";
 
 function HomeRoute() {
-  const { data: jsRepos } = useRepositories('stars:>10000 language:javascript');
-  const { data: tsRepos } = useRepositories('stars:>10000 language:typescript');
-  const { data: rustRepos } = useRepositories('stars:>10000 language:rust');
-  const { data: goRepos } = useRepositories('stars:>10000 language:go');
-
+  const { data: jsRepos } = useRepositories("stars:>10000 language:javascript");
+  const { data: tsRepos } = useRepositories("stars:>10000 language:typescript");
+  const { data: rustRepos } = useRepositories("stars:>10000 language:rust");
+  const { data: goRepos } = useRepositories("stars:>10000 language:go");
+  const { data: pytonRepos } = useRepositories("stars:>10000 language:python");
+  const { data: javaRepos } = useRepositories("stars:>10000 language:java");
   return (
     <div>
       <Hero />
@@ -22,6 +23,11 @@ function HomeRoute() {
         />
         <RepositoriesTable label="Most Popular Rust" repositories={rustRepos} />
         <RepositoriesTable label="Most Popular Go" repositories={goRepos} />
+        <RepositoriesTable
+          label="Most Popular python"
+          repositories={pytonRepos}
+        />
+        <RepositoriesTable label="Most Popular java" repositories={javaRepos} />
       </div>
     </div>
   );
